@@ -1,2 +1,1 @@
-# Wpisz tutaj publiczny URL aplikacji po wdrozeniu na Render, np.:
-# https://streaming-platform-xxxx.onrender.com
+https://streaming-platform-cp2i.onrender.com

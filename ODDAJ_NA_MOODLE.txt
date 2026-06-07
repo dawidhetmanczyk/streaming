@@ -1,0 +1,66 @@
+PROJEKT ZALICZENIOWY — PLATFORMA STREAMINGOWA W DJANGO
+Autor: Dawid Hetmańczyk
+
+================================================================================
+LINK DO APLIKACJI NA SERWERZE
+================================================================================
+
+https://streaming-platform-cp2i.onrender.com
+
+================================================================================
+REPOZYTORIUM GITHUB (KOD ŹRÓDŁOWY)
+================================================================================
+
+https://github.com/dawidhetmanczyk/streaming
+
+================================================================================
+CO PRZEKAZAĆ NA MOODLE
+================================================================================
+
+1. Plik ZIP: django_streaming_submission.zip (dołączony do zadania)
+2. Link do aplikacji: https://streaming-platform-cp2i.onrender.com
+
+================================================================================
+PANEL ADMINISTRATORA
+================================================================================
+
+URL:   https://streaming-platform-cp2i.onrender.com/admin/
+Login: admin
+Hasło: (wygenerowane przez Render — zmienna DJANGO_SUPERUSER_PASSWORD)
+
+================================================================================
+ZREALIZOWANE WYMAGANIA (11 PUNKTÓW)
+================================================================================
+
+1. System użytkowników — rejestracja, logowanie, wylogowanie, edycja profilu
+2. Model Film — tytuł, opis, rok produkcji, gatunek, czas trwania, miniatura, data dodania
+3. Strona główna — najnowsze filmy, wyszukiwarka, lista wszystkich filmów
+4. Szczegóły filmu — pełny opis, plakat, gatunek, rok, czas trwania
+5. Wyszukiwarka — po tytule i gatunku
+6. Panel administratora Django — dodawanie, edycja, usuwanie filmów
+7. Lista ulubionych — dodawanie, usuwanie, wyświetlanie
+8. Oceny 1–10 — średnia ocena i licba głosów przy każdym filmie
+9. Kategorie — model Kategoria, relacja M2M z filmem
+10. Komentarze — dodawanie i usuwanie własnych komentarzy
+11. Historia oglądania — zapis przy wejściu w szczegóły filmu + widok listy
+
+================================================================================
+ROZSZERZENIA PROJEKTU ZALICZENIOWEGO
+================================================================================
+
+- filtrowanie filmów po kategoriach
+- sekcja „Najwyżej oceniane”
+- paginacja listy filmów
+- komenda seed_films (dane demo)
+- walidacja formularzy
+
+================================================================================
+INSTRUKCJA DLA PROWADZĄCEGO — SZYBKI TEST
+================================================================================
+
+1. Wejdź na https://streaming-platform-cp2i.onrender.com — katalog filmów bez logowania
+2. Wyszukaj „Neon” — wyszukiwarka po tytule/gatunku
+3. Kliknij film — szczegóły, opis, plakat
+4. Zarejestruj konto (/register/) — dodaj ocenę, komentarz, ulubiony
+5. Sprawdź /historia/ i /ulubione/
+6. Panel admin: /admin/ — CRUD filmów
