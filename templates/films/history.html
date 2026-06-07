@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Historia oglądania — StreamFlix{% endblock %}
+
+{% block content %}
+<h1 class="section-title">Historia oglądania</h1>
+<p class="text-secondary mb-4">Filmy, których szczegóły ostatnio otworzyłeś.</p>
+{% if filmy %}
+  <div class="film-grid">
+    {% for film in filmy %}
+      {% include "films/_film_card.html" %}
+    {% endfor %}
+  </div>
+{% else %}
+  <p class="text-secondary">Historia jest pusta. Odwiedź stronę szczegółów dowolnego filmu.</p>
+{% endif %}
+{% endblock %}

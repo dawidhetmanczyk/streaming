@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block title %}Strona główna — StreamFlix{% endblock %}
+
+{% block content %}
+<section class="hero mb-4">
+  <h1 class="display-6 fw-bold">Odkrywaj filmy</h1>
+  <p class="text-secondary">Przeglądaj katalog, wyszukuj tytuły i gatunki, oceniaj oraz komentuj po zalogowaniu.</p>
+  <form action="{% url 'search' %}" method="get" class="row g-2 align-items-end search-bar">
+    <div class="col-md-8">
+      {{ search_form.q }}
+    </div>
+    <div class="col-md-4">
+      <button type="submit" class="btn btn-danger w-100">Szukaj</button>
+    </div>
+  </form>
+</section>
+
+{% if kategorie %}
+<section class="mb-4">
+  <h2 class="section-title">Kategorie</h2>
+  <div class="d-flex flex-wrap gap-2">
+    <a href="{% url 'home' %}" class="btn btn-sm {% if not aktywna_kategoria %}btn-danger{% else %}btn-outline-light{% endif %}">Wszystkie</a>
+    {% for kategoria in kategorie %}
+      <a href="?kategoria={{ kategoria.id }}" class="btn btn-sm {% if aktywna_kategoria == kategoria.id|stringformat:'s' %}btn-danger{% else %}btn-outline-light{% endif %}">{{ kategoria.nazwa }}</a>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+{% if najnowsze %}
+<section class="mb-5">
+  <h2 class="section-title">Najnowsze filmy</h2>
+  <div class="film-grid">
+    {% for film in najnowsze %}
+      {% include "films/_film_card.html" %}
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+{% if najwyzej_oceniane %}
+<section class="mb-5">
+  <h2 class="section-title">Najwyżej oceniane</h2>
+  <div class="film-grid">
+    {% for film in najwyzej_oceniane %}
+      {% include "films/_film_card.html" %}
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+<section>
+  <h2 class="section-title">Wszystkie filmy</h2>
+  {% if filmy %}
+    <div class="film-grid mb-4">
+      {% for film in filmy %}
+        {% include "films/_film_card.html" %}
+      {% endfor %}
+    </div>
+
+    {% if is_paginated %}
+      <nav aria-label="Paginacja filmów">
+        <ul class="pagination justify-content-center">
+          {% if page_obj.has_previous %}
+            <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}{% if aktywna_kategoria %}&kategoria={{ aktywna_kategoria }}{% endif %}">Poprzednia</a></li>
+          {% endif %}
+          <li class="page-item disabled"><span class="page-link">Strona {{ page_obj.number }} z {{ page_obj.paginator.num_pages }}</span></li>
+          {% if page_obj.has_next %}
+            <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}{% if aktywna_kategoria %}&kategoria={{ aktywna_kategoria }}{% endif %}">Następna</a></li>
+          {% endif %}
+        </ul>
+      </nav>
+    {% endif %}
+  {% else %}
+    <p class="text-secondary">Brak filmów w katalogu. Dodaj je w panelu administratora.</p>
+  {% endif %}
+</section>
+{% endblock %}

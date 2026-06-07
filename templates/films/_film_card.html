@@ -1,0 +1,21 @@
+{% load static %}
+<a href="{% url 'film_detail' film.pk %}" class="film-card text-decoration-none">
+  <div class="film-card-poster">
+    {% if film.miniatura %}
+      <img src="{{ film.miniatura.url }}" alt="{{ film.tytul }}" />
+    {% elif film.plakat_static %}
+      <img src="{% static film.plakat_static %}" alt="{{ film.tytul }}" />
+    {% else %}
+      <div class="film-card-placeholder">{{ film.tytul|slice:":1" }}</div>
+    {% endif %}
+  </div>
+  <div class="film-card-body">
+    <h3 class="film-card-title">{{ film.tytul }}</h3>
+    <p class="film-card-meta mb-1">{{ film.rok_produkcji }} · {{ film.gatunek }} · {{ film.czas_trwania }} min</p>
+    {% if film.avg_ocena %}
+      <p class="film-card-rating mb-0">★ {{ film.avg_ocena|floatformat:1 }} ({{ film.liczba_ocen }})</p>
+    {% else %}
+      <p class="film-card-rating mb-0 text-secondary">Brak ocen</p>
+    {% endif %}
+  </div>
+</a>

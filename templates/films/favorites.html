@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Ulubione — StreamFlix{% endblock %}
+
+{% block content %}
+<h1 class="section-title">Twoje ulubione filmy</h1>
+{% if filmy %}
+  <div class="film-grid">
+    {% for film in filmy %}
+      {% include "films/_film_card.html" %}
+    {% endfor %}
+  </div>
+{% else %}
+  <p class="text-secondary">Nie masz jeszcze ulubionych filmów. Odwiedź stronę szczegółów filmu i dodaj go do listy.</p>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Edycja profilu — StreamFlix{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-lg-6">
+    <h1 class="section-title">Edycja profilu</h1>
+    <form method="post" enctype="multipart/form-data" class="panel-box">
+      {% csrf_token %}
+      {% for field in form %}
+        <div class="mb-3">
+          <label class="form-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+          {{ field }}
+          {% if field.errors %}
+            <div class="text-danger small">{{ field.errors|striptags }}</div>
+          {% endif %}
+        </div>
+      {% endfor %}
+      <button type="submit" class="btn btn-danger">Zapisz profil</button>
+    </form>
+  </div>
+</div>
+{% endblock %}
